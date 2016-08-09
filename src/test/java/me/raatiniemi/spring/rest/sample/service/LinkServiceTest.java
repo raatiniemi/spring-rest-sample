@@ -18,10 +18,19 @@ public class LinkServiceTest {
 
     private List<Link> expected;
     private String[] urls;
+    private long perPage;
+    private long page;
 
-    public LinkServiceTest(Link[] expected, String[] urls) {
+    public LinkServiceTest(
+            Link[] expected,
+            String[] urls,
+            long perPage,
+            long page
+    ) {
         this.expected = Arrays.asList(expected);
         this.urls = urls;
+        this.perPage = perPage;
+        this.page = page;
     }
 
     @Parameters
@@ -34,7 +43,31 @@ public class LinkServiceTest {
                                 },
                                 new String[]{
                                         "http://example.com/"
-                                }
+                                },
+                                20,
+                                0
+                        },
+                        {
+                                new Link[]{
+                                        new Link(4, "http://example.com/4"),
+                                        new Link(5, "http://example.com/5")
+                                },
+                                new String[]{
+                                        "http://example.com/0",
+                                        "http://example.com/1",
+                                        "http://example.com/2",
+                                        "http://example.com/3",
+                                        "http://example.com/4",
+                                        "http://example.com/5",
+                                        "http://example.com/6",
+                                        "http://example.com/7",
+                                        "http://example.com/8",
+                                        "http://example.com/9",
+                                        "http://example.com/10",
+                                        "http://example.com/11"
+                                },
+                                2,
+                                2
                         }
                 }
         );
@@ -48,7 +81,7 @@ public class LinkServiceTest {
 
         assertEquals(
                 this.expected,
-                this.linkService.get()
+                this.linkService.get(perPage, page)
         );
     }
 }
