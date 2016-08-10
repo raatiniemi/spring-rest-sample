@@ -32,7 +32,7 @@ public class LinkTestEqualsHashCode {
 
     @Parameters
     public static Collection<Object[]> getParameters() {
-        Link link = new Link(1, "http://example.com/");
+        Link link = new Link("1", "http://example.com/");
 
         return Arrays.asList(
                 new Object[][]{
@@ -58,13 +58,13 @@ public class LinkTestEqualsHashCode {
                                 "With different id",
                                 Boolean.FALSE,
                                 link,
-                                new Link(2, "http://example.com/")
+                                new Link("2", "http://example.com/")
                         },
                         {
                                 "With different url",
                                 Boolean.FALSE,
                                 link,
-                                new Link(1, "https://example.com/")
+                                new Link("1", "https://example.com/")
                         }
                 }
         );

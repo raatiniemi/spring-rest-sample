@@ -35,7 +35,10 @@ class LinkService {
     @ResponseStatus(code = HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST, value = "/links")
     public Link add(@RequestBody String url) {
-        Link link = new Link(this.counter.getAndIncrement(), url);
+        Link link = new Link(
+                String.valueOf(this.counter.getAndIncrement()),
+                url
+        );
 
         this.links.add(link);
         return link;

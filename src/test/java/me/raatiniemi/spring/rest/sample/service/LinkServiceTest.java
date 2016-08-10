@@ -39,7 +39,7 @@ public class LinkServiceTest {
                 new Object[][]{
                         {
                                 new Link[]{
-                                        new Link(0, "http://example.com/")
+                                        new Link("0", "http://example.com/")
                                 },
                                 new String[]{
                                         "http://example.com/"
@@ -49,8 +49,8 @@ public class LinkServiceTest {
                         },
                         {
                                 new Link[]{
-                                        new Link(4, "http://example.com/4"),
-                                        new Link(5, "http://example.com/5")
+                                        new Link("4", "http://example.com/4"),
+                                        new Link("5", "http://example.com/5")
                                 },
                                 new String[]{
                                         "http://example.com/0",

@@ -4,15 +4,15 @@ import java.util.Objects;
 
 @SuppressWarnings("ALL")
 public class Link {
-    private final long id;
+    private final String id;
     private final String url;
 
-    public Link(long id, String url) {
+    public Link(String id, String url) {
         this.id = id;
         this.url = url;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
@@ -31,14 +31,14 @@ public class Link {
         }
 
         Link that = (Link) o;
-        return getId() == that.getId()
+        return Objects.equals(getId(), that.getId())
                 && Objects.equals(getUrl(), that.getUrl());
     }
 
     @Override
     public int hashCode() {
         int result = 17;
-        result = 31 * result + (int) (getId() ^ (getId() >>> 32));
+        result = 31 * result + Objects.hashCode(getId());
         result = 31 * result + Objects.hashCode(getUrl());
 
         return result;
